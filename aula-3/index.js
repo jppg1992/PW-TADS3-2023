@@ -4,10 +4,12 @@ const app = express();
 
 const port = 3000;
 
-app.get("/oi/:nome", (req, res) => {
-  const nome = req.params.nome;
-  console.log(nome);
-  res.send(`Hello World ${nome}`);
+app.get("/oi", (req, res) => {
+  res.send(`Hello World `);
+});
+
+app.get("/tchau", (req, res) => {
+  res.send(`Good Bye World `);
 });
 
 app.listen(port, () => {
