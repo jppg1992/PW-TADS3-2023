@@ -1,0 +1,5 @@
+protocolos tcp-ip
+protocolos dns
+Protocolos http
+verbos/metodos
+de forma geral como a informação é tratada na internet..+
