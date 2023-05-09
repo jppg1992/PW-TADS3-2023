@@ -3,3 +3,8 @@ protocolos dns
 Protocolos http
 verbos/metodos
 de forma geral como a informação é tratada na internet..+
+
+express é um dos vários frameworks para rodar aplicações web  em node.
+    - contém toda a estrutura do protocolo http.
+    - nos permite a trabalhar com os verbos get/post 
+    

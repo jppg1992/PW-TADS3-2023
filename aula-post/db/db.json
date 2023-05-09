@@ -1,0 +1,8 @@
+{
+  "pessoas": [
+    { "id": 0, "nome": "Gledson Leal", "email": "gledsonleal@ifsul.edu.br" },
+    { "id": 1, "nome": "Fulano de Tal", "email": "fulano@mail.com" },
+    { "id": 2, "nome": "João de Tal", "email": "joao@mail.com" },
+    { "id": 3, "nome": "Paulo de Tal", "email": "paulo@mail.com" }
+  ]
+}
