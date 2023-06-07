@@ -10,6 +10,7 @@
     <table border="1 solid ">
       <head>
         <tr>
+          <th>Id</th>
           <th>Nome</th>
           <th>E-mail</th>
         </tr>
@@ -17,6 +18,7 @@
       <tbody>
         <% imprime_db.forEach(function(pessoa){%>
         <tr>
+          <td><%= pessoa.id %></td>
           <td><%= pessoa.nome%></td>
           <td><%= pessoa.email%></td>
         </tr>
@@ -24,13 +26,13 @@
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="2">
+          <td colspan="3">
             <p>
               Total de Registros:
               <span style="text-align: right">
-                <%= (imprime_db.length) ? imprime_db.length : 0 %>
+                <%= (imprime_db.length>0) ? imprime_db.length : 0 %>
               </span>
-              <button>Novo</button>
+              <button><a href="/cadastro">Novo</a></button>
             </p>
           </td>
         </tr>
