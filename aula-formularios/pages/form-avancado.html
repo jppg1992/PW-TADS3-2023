@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Procesamento de dados de form</title>
+  </head>
+  <body>
+    <h3>Procesamento de dados de form</h3>
+    <form action="/processar-dados-form2" method="POST">
+      Nome:
+      <br />
+      <input type="text" name="nome_pessoa" value="" />
+      <br />
+      Idade:
+      <br />
+      <input type="number" name="idade" value="" />
+      <br />
+      Cidade:
+      <br />
+      <select name="cidade_atual">
+        <option>Porto Alegre</option>
+        <option selected="selected">Bagé</option>
+        <option>São Paulo</option>
+        <option>Rio de Janeiro</option>
+      </select>
+      <br />
+      <br />
+      Sua faixa etária:
+      <br />
+      <input type="radio" name="faixa_etaria" value="pessoa_jovem" />
+      Menos de 20 anos
+      <br />
+      <input type="radio" name="faixa_etaria" value="pessoa_adulta" />
+      Entre de 21 e 60 anos
+      <br />
+      <input type="radio" name="faixa_etaria" value="pessoa_idosa" />
+      Mais de 61 anos
+      <br />
+      <br />
+      <br />
+      Tipos de comida gosta:
+      <br />
+      <input type="checkbox" name="comidas_preferidas" value="massas" />
+      Massas
+      <br />
+      <input type="checkbox" name="comidas_preferidas" value="frutos_do_mar" />
+      Frutos do mar
+
+      <br />
+      <input type="checkbox" name="comidas_preferidas" value="sopas" />
+      Sopas
+      <br />
+      <br />
+      <br />
+      <button type="submit">Processar dados</button>
+    </form>
+  </body>
+</html>
