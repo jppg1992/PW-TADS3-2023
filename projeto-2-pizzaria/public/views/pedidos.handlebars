@@ -1,0 +1,36 @@
+<h1>Lista de pedidos</h2>
+
+  <table>
+    <tr>
+      <th>Pedido</th>
+      <th>Cliente</th>
+      <th>Endereço</th>
+      <th>Pizzas G</th>
+      <th>Pizzas M</th>
+      <th>Pizzas P</th>
+      <th>Tele Entrega</th>
+      <th>Total</th>
+      <th>Data</th>
+      <th>Enviado</th>
+      
+    </tr>
+
+    {{#each pedidos}}
+
+    <tr>
+      <td class="id">{{this.codigo_pedido}}</td>
+      <td>{{this.cliente_nome}}</td>
+      <td>{{this.cliente_endereco}}</td>
+      <td>{{this.qtd_pizzas_grandes}}</td>
+      <td>{{this.qtd_pizzas_medias}}</td>
+      <td>{{this.qtd_pizzas_pequenas}}</td>
+      <td>{{this.tele_entrega}}</td>
+      <td>{{this.total_a_pagar}}</td>
+      <td>{{this.data_hora}}</td>
+      {{#if this.pedido_enviado }}
+       <td>Sim</td>
+       {{else}}
+       <td>Não</td> 
+    </tr>
+    {{/each}}
+  </table>

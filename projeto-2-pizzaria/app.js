@@ -1,12 +1,11 @@
 const express = require("express");
 const app = express();
 const { engine } = require("express-handlebars");
-const path = require("path");
-
+const path = require("path"); 
 const port = 3000;
 const { Sequelize, where } = require("sequelize");
 // Node.js body parsing middleware.
-var bodyParser = require("body-parser");
+var bodyParser = require("body-parser"); 
 //configuracao de uso do body-parser
 //parse application/x-www-form-urlencoded (dados vem no body da req. HTTP)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,15 +33,14 @@ const Pedido = sequelize.define(
     },
     cliente_nome: { type: Sequelize.STRING(40), allowNull: false },
     cliente_endereco: { type: Sequelize.STRING(80), allowNull: false },
-    qtd_pizzzas_grandes: { type: Sequelize.INTEGER, allowNull: false },
+    qtd_pizzas_grandes: { type: Sequelize.INTEGER, allowNull: false },
     qtd_pizzas_medias: { type: Sequelize.INTEGER, allowNull: false },
     qtd_pizzas_pequenas: { type: Sequelize.INTEGER, allowNull: false },
     tele_entrega: { type: Sequelize.BOOLEAN, allowNull: false },
-    total_a_pagar: { type: Sequelize.DOUBLE, allowNull: false },
-    data_hora: { type: Sequelize.DATE, allowNull: false },
-  },
+    total_a_pagar: { type: Sequelize.DOUBLE, allowNull: false },  
+    },
   {
-    //configurações
+    //configurações 
     createdAt: false, //tabela do bd sem este campo padrao do Sequ.
     updatedAt: false, //tabela do bd sem este campo padrao do Sequ.
   }
@@ -62,16 +60,59 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./public/views");
 
-app.get("/", (req, res) => {
+
+app.get('/',(req,res)=>{
+  res.render('home')
+})
+
+app.get("/pedidos", (req, res) => {
   Pedido.findAll({
     attributes: ["*"],
     order: [["data_hora", "DESC"]], //ordenar por nome, ASC
     raw: true, // <-- Retornar um array de objetos
   }).then((pedidos) => {
     //chamamos o array de objeto de ‘estudantes’ acima
-    if (Array.isArray(pedidos)) res.render("home", pedidos);
+    if (Array.isArray(pedidos)) {
+      const pedidosTratados = pedidos.map(p=>{
+        return {
+          ...p,
+          data_hora:new Date(p.data_hora).toLocaleString('pt-BR', { timezone: 'UTC' }),
+          tele_entrega: p.tele_entrega ? 'Sim':'Não'
+      }
+      })
+      res.render("pedidos", {pedidos:pedidosTratados}) 
+  };
+    
   });
 });
+
+app.get('/novo-pedido',(req,res)=>{
+  res.sendFile(__dirname+'/public/static-pages/form-pedido.html')
+})
+
+app.post('/inserir-pedido',(req,res)=>{
+
+  pedido = { 
+    cliente_nome: req.body.nome,
+  cliente_endereco: req.body.endereco,
+  qtd_pizzas_grandes: parseInt(req.body.pizzaG),
+  qtd_pizzas_medias: parseInt(req.body.pizzaM),
+  qtd_pizzas_pequenas: parseInt(req.body.pizzaP),
+  tele_entrega: (req.body.tipo_entrega === 'tele')  ,
+  total_a_pagar: parseFloat(req.body.total)    
+  }
+ 
+  Pedido.create(pedido).then(
+    pedido =>{
+      res.render('cadastrado',{pedido:pedido.codigo_pedido,total:pedido.total_a_pagar}) 
+    
+    },
+    error =>{ res.send('erro: ', new Error( error).message)
+
+    }
+  ) 
+        
+})
 
 app.listen(port, () => {
   console.log(`app listening on port http://localhost:${port}`);
