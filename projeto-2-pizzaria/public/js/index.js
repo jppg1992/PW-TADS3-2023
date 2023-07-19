@@ -48,7 +48,3 @@ function validarForm_confirmarPedido() {
   }
 }
 
-function verifica_enviar_pedido(codigo) {
-  console.log("oiiii");
-  window.location.href("http://localhost:3000/novo-pedido");
-}

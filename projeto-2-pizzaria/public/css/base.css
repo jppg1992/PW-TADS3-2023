@@ -123,10 +123,31 @@ nav a {
 
 .container {
   height: 87vh;
-  padding: 0 25%;
+  padding: 0 15%;
   background-color: var(--bg-light);
 }
 
 .errorMsg {
   color: red;
+}
+
+.dados-pedido{
+  display: flex;
+  flex-direction: column; 
+}
+ .dados-pedido p {
+  display: inline ;
+  text-align: left;
+  font-size: 2.0rem;
+  line-height: 115%; 
+  color: var(--paragraph);
+
+  margin-bottom: 0.5rem;
+}
+
+.neg {
+  font-style: bold;
+  font-size: 2.4rem;
+  line-height: 115%; 
+  font-weight: 400s;
 }

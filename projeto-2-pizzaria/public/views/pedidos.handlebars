@@ -28,12 +28,12 @@
       <td>{{this.tele_entrega}}</td>
       <td>{{this.total_a_pagar}}</td>
       <td>{{this.data_hora}}</td>
-      {{#ifeq this.pedido_enviado "Sim"}} 
+      {{#if this.pedido_enviado}} 
         <td class="tdSim">Sim</td> 
-      {{/ifeq}}
-      {{#ifeq this.pedido_enviado "Não"}}  
+      {{/if}}
+      {{#if this.pedido_nao_enviado}}  
         <td class="tdNao"> <a href="enviar-pedido/{{this.codigo_pedido}}">Não</a></td>  
-      {{/ifeq}}
+      {{/if}}
        
     </tr>
     {{/each}}

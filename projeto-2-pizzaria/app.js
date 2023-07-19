@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
-const { engine } = require("express-handlebars");
-var helpers = require("handlebars-helpers");
+const { engine } = require("express-handlebars"); 
 const path = require("path");
 const port = 3000;
 const { Sequelize, where } = require("sequelize");
@@ -81,7 +80,7 @@ app.get("/pedidos", (req, res) => {
             timezone: "UTC",
           }),
           tele_entrega: p.tele_entrega ? "Sim" : "Não",
-          // pedido_enviado: p.pedido_enviado ? "Sim" : "Não",
+          pedido_nao_enviado: p.pedido_enviado ? false : true,
         };
       });
       res.render("pedidos", { pedidos: pedidosTratados });
@@ -137,6 +136,37 @@ app.get("/enviar-pedido/:codigo", (req, res) => {
       });
     });
 });
+
+app.get('/pesquisar-pedido',(req,res)=>{
+  res.render('pesquisa')
+})
+
+app.post('/dados-pedido',(req,res)=>{
+
+  const codigo = parseInt(req.body.pedido)
+
+  Pedido.findByPk(codigo).then((p) => {
+    //chamamos o array de objeto de ‘estudantes’ acima
+     
+    if (p) {
+      const pedidoTratado =   
+         {
+          ...p,
+          data_hora: new Date(p.data_hora).toLocaleString("pt-BR", {
+            timezone: "UTC",
+          }),
+          tele_entrega: p.tele_entrega ? "Sim" : "Não",
+          pedido_enviado: p.pedido_enviado ? 'Sim' : 'Não',
+        }
+     
+      res.render("dados-pedido", { pedido: pedidoTratado});
+    }else{
+      res.render("erro",{msg:"Erro: Pedido não encontrado"})
+    }
+
+  })
+})
+  
 
 app.listen(port, () => {
   console.log(`app listening on port http://localhost:${port}`);
