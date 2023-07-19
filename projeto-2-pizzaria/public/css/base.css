@@ -7,7 +7,6 @@
 }
 
 :root {
- 
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
 
@@ -36,7 +35,7 @@ body {
 
   overflow: overlay;
 
-  background-color: var(--bg-light)
+  background-color: var(--bg-light);
 }
 
 ul {
@@ -112,7 +111,7 @@ footer a:hover {
   filter: brightness(150%);
 }
 
-.cabecalho-pagina h2{
+.cabecalho-pagina h2 {
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-size: 3rem;
   color: #c8d0d4;
@@ -126,4 +125,8 @@ nav a {
   height: 87vh;
   padding: 0 25%;
   background-color: var(--bg-light);
+}
+
+.errorMsg {
+  color: red;
 }
