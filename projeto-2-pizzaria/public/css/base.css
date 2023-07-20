@@ -95,7 +95,7 @@ img {
 }
 footer {
   background: #0bc414;
-  padding: 1.6rem;
+  padding: 2.25%;
   flex: 1;
   display: flex;
   align-items: center;
@@ -131,15 +131,15 @@ nav a {
   color: red;
 }
 
-.dados-pedido{
+.dados-pedido {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
- .dados-pedido p {
-  display: inline ;
+.dados-pedido p {
+  display: inline;
   text-align: left;
-  font-size: 2.0rem;
-  line-height: 115%; 
+  font-size: 2rem;
+  line-height: 115%;
   color: var(--paragraph);
 
   margin-bottom: 0.5rem;
@@ -148,6 +148,6 @@ nav a {
 .neg {
   font-style: bold;
   font-size: 2.4rem;
-  line-height: 115%; 
+  line-height: 115%;
   font-weight: 400s;
 }

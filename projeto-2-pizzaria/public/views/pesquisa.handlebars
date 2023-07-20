@@ -1,17 +1,25 @@
-  <form action="/dados-pedido" method="post">
-  <div class="container">
-  <div class="divInternaIputs">
-                    <input
-                      id="pedido"
-                      name="pedido"
-                      type="number"
-                      step="1"
-                      class="inputs"
-                      placeholder="pedido: '21'"
-                    />
-</div>
-<div class="divBtn">
-            <button id="button" type="submit">Pesquisar</button>
-</div>
-</form>
+<div class="container">
+  <form id="frm" action="/carregar-pedido" method="post">
+    <div id="conteudo-form">
+      <fieldset id="dadosProd">
+        <legend>Pesquisar Pedido</legend>
+        <div id="divInput">
+          <div class="divInternaIputs">
+            <input
+              id="pedido"
+              name="pedido"
+              type="number"
+              step="1"
+              class="inputs"
+              placeholder="pedido: '21'"
+            />
+          </div>
+
+        </div>
+      </fieldset>
+    </div>
+    <div class="divBtn">
+      <button id="button">Pesquisar</button>
+    </div>
+  </form>
 </div>
